@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e967b6c-cfb8-4eb1-ad39-bfd28517db9d">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="ruta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select NumFolio,Fecha,Poliza,Referencia,Concepto,Importe from tb_prestamos where Year(Fecha) = $P!{fecha_1} ]]>
+	</queryString>
+	<field name="NumFolio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Poliza" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Referencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Concepto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Importe" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="16" width="306" height="63" uuid="79fca726-ab02-4350-b721-23e199faae07"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte de Prestamos]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="402" y="60" width="153" height="20" uuid="6ae03b6a-8a53-400b-ac10-ee6893613385"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="1" y="0" width="139" height="79" uuid="579e3fe0-6880-4e5c-91fe-4613c54ffd65"/>
+				<imageExpression><![CDATA[$P{ruta}.toString()+"\\reportes\\reporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="65" height="20" uuid="7fe6d2a3-fb05-4809-864b-0ed1ac3bfdd8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[IdPrestamo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="65" y="0" width="75" height="20" uuid="b6ccc53d-e78f-4092-b7cc-2ee31af8ef2e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="56" height="20" uuid="87e56fa9-841e-4e83-93b1-9de11c69638d"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Poliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="461" y="0" width="94" height="20" uuid="dab81abc-182f-4ebc-b067-2d22124fc8b6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Importe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="1" width="172" height="20" uuid="c5490c39-35f3-44de-acf4-f8fa9def587e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Concepto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="0" width="93" height="21" uuid="92f37499-f139-4703-9f04-a9a40bbd5f83"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Referencia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="65" y="0" width="75" height="20" uuid="6cbd27fc-4684-4e04-a2ee-f4c389882f3d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="1" width="56" height="20" uuid="881ceb69-fb1c-479d-b0f3-9ee32ee983dc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Poliza}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="1" width="93" height="20" uuid="9d181b79-0778-435d-afbb-20fb5f6b2ca9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Referencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="1" width="172" height="20" uuid="d0daf18d-4d47-4fd6-aeff-bfa72c7658b8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Concepto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="0" width="94" height="20" uuid="592ceb0a-cf33-453e-9dd2-58428145d9ae"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="65" height="20" uuid="97334aad-c2d5-4037-b573-919fbde10cf0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NumFolio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="1" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="39" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="286" y="19" width="40" height="20" uuid="2a7dff7c-dee8-48af-bf9d-0df0ec5364c2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="206" y="19" width="80" height="20" uuid="995d5c2a-780d-4878-9585-899dd6841727"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="a276ddbd-8bc9-4aa3-a92b-29ccbb9c1212"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="402" y="0" width="53" height="20" uuid="d88fa2fa-4184-4527-852f-aa66a91c045c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

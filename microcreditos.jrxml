@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="449fc27f-733e-4412-bf16-7e88779b266e">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ruta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT FechaOperacion,ReferenciaMicrocredito,ConceptoMicrocredito,ImporteMicrocredito FROM tb_microcreditos  Where FechaOperacion between "$P!{fecha_1}" and "$P!{fecha_2}"]]>
+	</queryString>
+	<field name="FechaOperacion" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ReferenciaMicrocredito" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ConceptoMicrocredito" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ImporteMicrocredito" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="424" y="59" width="131" height="20" uuid="4efa5448-8329-43ea-acc3-232e53e53605"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="78" width="555" height="1" uuid="e2c53ded-d846-4849-a44d-0d5385b046a7"/>
+			</line>
+			<staticText>
+				<reportElement x="100" y="18" width="424" height="41" uuid="ee96a708-6433-4c21-9edc-7e09b7750706"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte de Historial de Microcreditos]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="100" height="78" uuid="867cd7dd-f696-44e8-ba16-faa5d56ff862"/>
+				<imageExpression><![CDATA[$P{ruta}.toString()+"\\reportes\\reporte.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="125" y="62" width="100" height="20" uuid="485d4170-489c-45e4-be15-9c796842f2f9"/>
+				<textFieldExpression><![CDATA[$P{ruta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="9491f971-9437-4917-a8b5-70c5306cd7d6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha de Operacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="0" width="199" height="20" uuid="b247edd6-54e5-4cb5-bdc7-bebff18fcb77"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Concepto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="124" height="20" uuid="54d9f194-04fb-439f-94d2-d09fd1d94b8a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Importe de Microcredito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="88" height="20" uuid="984e5ea9-7ea5-432d-9269-1905d28a0d68"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Referencia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="21" y="0" width="57" height="20" uuid="07e61611-8c89-42c9-8bf2-c3a74dce5537"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FechaOperacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="1" width="124" height="20" uuid="8cb03854-0f15-444c-bd0c-f85a743318a4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ImporteMicrocredito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="88" height="20" uuid="b3355089-7992-492b-bc97-8a4579771a67"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ReferenciaMicrocredito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="0" width="199" height="20" uuid="c37c33d6-5249-4890-9984-fc70324952c5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ConceptoMicrocredito}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="194" y="15" width="80" height="20" uuid="0fdde67f-d99e-431d-ace5-3e5b46d7b79c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="274" y="15" width="40" height="20" uuid="fd9dbb5a-88da-4daa-8137-8d49b7ddf308"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="424" y="0" width="100" height="20" uuid="ce5c9cb0-1318-4d92-bbdf-d40e64eea394"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="373" y="1" width="51" height="19" uuid="f40847b6-a162-4744-83ae-6274e20aee7e"/>
+				<textElement>
+					<font fontName="Bahnschrift" size="14"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
